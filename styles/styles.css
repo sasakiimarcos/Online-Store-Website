@@ -6,7 +6,7 @@ body {
 
 .banner {
   margin: 0px;
-  background-color: rebeccapurple;
+  background-color: rgb(135, 129, 141);
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -21,20 +21,37 @@ nav {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: aqua;
+  display: flex;
+  justify-content: space-around;
 }
 nav ul {
   margin: 0px;
+  list-style-type: none;
+  display: inline-block;
+}
+nav ul li {
+  text-align: center;
+  display: inline;
+}
+nav ul li a {
+  padding: 10px;
+  background-color: azure;
 }
 
 .cart {
   background-color: aliceblue;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
 }
 .cart #cart-total h2 {
   margin: 0px;
 }
 .cart #cart-total p {
-  display: inline;
   margin: 0px;
+}
+.cart #cart-total button {
+  display: block;
 }
 .cart #cart-list h2 {
   margin: 0px;

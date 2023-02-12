@@ -1,10 +1,19 @@
 class Product {
-    constructor(name, price, type)
+    constructor(name, price, type, amount=0)
     {
         this.name = name,
         this.price = price,
         this.type = type,
-        this.amount = 0
+        this.amount = amount
+    }
+
+    toJSON() {
+		return {
+			name: this.name,
+			price: this.price,
+			type: this.type,
+            amount: this.amount
+		}
     }
 }
 
@@ -15,10 +24,12 @@ function addtocart(item) {
                 productlist[0].amount += 1
                 updateTotal()
                 createRow(productlist[0])
+                addtostorage()
             } else {
                 productlist[0].amount += 1
                 updateTotal()
                 updateRow(productlist[0])
+                addtostorage()
             }
             break
         case "B":
@@ -26,10 +37,12 @@ function addtocart(item) {
                 productlist[1].amount += 1
                 updateTotal()
                 createRow(productlist[1])
+                addtostorage()
             } else {
                 productlist[1].amount += 1
                 updateTotal()
                 updateRow(productlist[1])
+                addtostorage ()
             }
             break
         case "C":
@@ -37,10 +50,12 @@ function addtocart(item) {
                 productlist[2].amount += 1
                 updateTotal()
                 createRow(productlist[2])
+                addtostorage ()
             } else {
                 productlist[2].amount += 1
                 updateTotal()
                 updateRow(productlist[2])
+                addtostorage ()
             }
             break
         case "D":
@@ -48,10 +63,12 @@ function addtocart(item) {
                 productlist[3].amount += 1
                 updateTotal()
                 createRow(productlist[3])
+                addtostorage ()
             } else {
                 productlist[3].amount += 1
                 updateTotal()
                 updateRow(productlist[3])
+                addtostorage()
             }
             break
         case "E":
@@ -59,10 +76,12 @@ function addtocart(item) {
                 productlist[4].amount += 1
                 updateTotal()
                 createRow(productlist[4])
+                addtostorage()
             } else {
                 productlist[4].amount += 1
                 updateTotal()
                 updateRow(productlist[4])
+                addtostorage()
             }
             break
         case "F":
@@ -70,10 +89,12 @@ function addtocart(item) {
                 productlist[5].amount += 1
                 updateTotal()
                 createRow(productlist[5])
+                addtostorage()
             } else {
                 productlist[5].amount += 1
                 updateTotal()
                 updateRow(productlist[5])
+                addtostorage()
             }
             break
     }
@@ -84,7 +105,7 @@ function updateTotal () {
     for (let i = 0; i < productlist.length; i++) {
         totalAmount += productlist[i].amount * productlist[i].price
     }
-    total.innerText = String(totalAmount)
+    total.innerText = "$" + String(totalAmount)
 }
 
 function createRow (product) {
@@ -101,6 +122,7 @@ function createRow (product) {
         product.amount -= 1
         updateTotal()
         updateRow(product)
+        addtostorage()
     }
     button.innerText = " - "
     column1.append(button)
@@ -120,12 +142,34 @@ function updateRow (product) {
         column2.innerText = String(product.amount)
         let column4 = document.getElementById(`${product.name}-totalAmount`)
         column4.innerText = "$" + String(product.amount * product.price)
-    } else {
+    } else if (document.getElementById(`${product.name}`)) {
         let row = document.getElementById(`${product.name}`)
         row.innerHTML = ''
         row.remove()
     }
 }
+
+function addtostorage () {
+    let objlist = []
+    for (let i = 0; i < productlist.length; i++) {
+        objlist.push(productlist[i].toJSON())
+    }
+    localStorage.setItem('productlist', JSON.stringify(objlist))
+}
+
+function clearlist () {
+    for (let i = 0; i < productlist.length; i++) {
+        productlist[i].amount = 0
+        updateRow(productlist[i])
+    }
+    addtostorage()
+    updateTotal()
+}
+
+// Variable where the total cost is stored
+let total = document.getElementById("totalAmount")
+
+let table = document.getElementById("cart-list-table")
 
 let productlist = [
     new Product("Casio's MS-80B", 9, "scientific"),
@@ -134,7 +178,19 @@ let productlist = [
     new Product("Texas Instruments TI-30XS", 15.44, "graphing"),
     new Product("Sharp EL-W535TGBBL 16-digit scientific calculator", 19.72, "scientific"),
     new Product("Texas Instruments TI-84 Plus CE", 100, "graphing")
-]
+    ]
+if (localStorage.getItem('productlist')) {
+    let stored = JSON.parse(localStorage.getItem("productlist"))
+    productlist.length = 0
+    for (const product of stored)
+        productlist.push(new Product(product.name, product.price, product.type, product.amount));
+    for (let i = 0; i < productlist.length; i++) {
+        if (productlist[i].amount > 0) {
+            createRow(productlist[i])
+        }
+    }
+    updateTotal()
+} 
 
 // Buttons for the purchase of each item
 let buttons = document.getElementsByClassName("products-purchase")
@@ -142,19 +198,11 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].onclick = () => {addtocart(buttons[i].value)}
 }
 
-// Variable where the total cost is stored
-let total = document.getElementById("totalAmount")
-
 // Remove all Purchases
 let clear = document.getElementById("clear")
 clear.onclick = () => {
-    for (let i = 0; i < productlist.length; i++) {
-        productlist[i].amount = 0
-    }
-    updateTotal()
+    clearlist()
 }
-
-let table = document.getElementById("cart-list-table")
 
 let show = document.getElementById("cart-list-button")
 show.onclick = () => {
@@ -167,4 +215,8 @@ show.onclick = () => {
     }
 }
 
-let 
+let purchase = document.getElementById("purchase")
+purchase.onclick = () => {
+    alert("Item/s have been purchased successfully")
+    clearlist()
+}
