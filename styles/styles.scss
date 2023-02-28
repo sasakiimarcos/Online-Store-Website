@@ -47,15 +47,16 @@ nav {
             margin: 0px;
         }
         p {
-            margin: 0px
+            font-size: large;
+            margin: 10px 0px 10px 0px;
         }
         button {
             display: block;
         }
     }
     #cart-list {
-        h2 {
-            margin: 0px;
+        button {
+            margin: 10px 0px 10px 0px;
         }
         #cart-list-table {
             display: none;
@@ -65,10 +66,13 @@ nav {
 
 .products {
     background-color: mintcream;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: space-evenly;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    justify-content: center;
     .products-product {
         border-radius: 20px;
         border-style: solid;

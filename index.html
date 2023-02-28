@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="styles/styles.css">
     <title>Home</title>
 </head>
@@ -18,26 +20,31 @@
             <li><a href="./pages/faq.html">FAQ</a></li>
         </ul>
     </nav>
-    <div class="cart">
-        <div id="cart-total">
-            <h2>Total</h2>
-            <p id="totalAmount">0</p>
-            <button id="clear">Clear</button>
+    <div class="cart container-fluid">
+        <div class="row" id="cart-total" >
+            <div class="col text-center">
+                <h2>Total</h2>
+                <p id="totalAmount">0</p>
+                <button id="clear" class="btn btn-info">Clear</button>
+            </div>
         </div>
-        <div id="cart-list">
-            <h2>Shopping Cart</h2>
-            <button id="cart-list-button">Show</button>
-            <table id="cart-list-table">
-                <tr>
-                    <th>    </th>
-                    <th>Amount</th>
-                    <th>Product</th>
-                    <th>Cost</th>
-                </tr>
-            </table>
+        <div id="cart-list" class="row">
+            <div class="col text-center">
+                <h2>Shopping Cart</h2>
+                <button id="cart-list-button" class="btn btn-primary">Show</button>
+                <table id="cart-list-table">
+                    <tr>
+                        <th>    </th>
+                        <th>Amount</th>
+                        <th>Product</th>
+                        <th>Cost</th>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div id="cart-submit">
-            <button type="submit" id="purchase">Purchase</button>
+            <h2>Purchase</h2>
+            <button type="button" id="purchase" class="btn btn-success text-center">Purchase</button>
         </div>
     </div>
     <div class="products">
@@ -50,17 +57,17 @@
             </div>
         </div>
         <div class="products-product">
-            <img src="assets/B.jpg" alt="Image of Seaciyan Mini Calculator">
+            <img src="assets/B.jpg" alt="Image of Seaciyan Mini">
             <div>
-                <h3>Seaciyan Mini Calculator</h3>
+                <h3>Seaciyan Mini</h3>
                 <p><strong>Price:</strong> $7</p>
                 <button value="B" class="products-purchase">Add to cart</button>
             </div>
         </div>
         <div class="products-product">
-            <img src="assets/C.jpg" alt="Image of Deli Mini standard function calculator">
+            <img src="assets/C.jpg" alt="Image of Deli Mini Standard">
             <div class="products-product-description">
-                <h3>Deli Mini standard function calculator</h3>
+                <h3>Deli Mini Standard</h3>
                 <p><strong>Price:</strong> $7</p>
                 <button value="C" class="products-purchase">Add to cart</button>
             </div>
@@ -74,9 +81,9 @@
             </div>
         </div>
         <div class="products-product">
-            <img src="assets/E.jpg" alt="Image of Sharp EL-W535TGBBL 16-digit scientific calculator">
+            <img src="assets/E.jpg" alt="Image of Sharp EL-W535TGBBL 16-digit">
             <div class="products-product-description">
-                <h3>Sharp EL-W535TGBBL 16-digit scientific calculator</h3>
+                <h3>Sharp EL-W535TGBBL 16-digit</h3>
                 <p><strong>Price:</strong> $19.72</p>
                 <button value="E" class="products-purchase">Add to cart</button>
             </div>
@@ -91,5 +98,8 @@
         </div>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="scripts/script.js"></script>
 </html>

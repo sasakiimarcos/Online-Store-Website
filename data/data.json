@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Casio's MS-80B",
+        "price": 9
+    },
+    {
+        "name": "Seaciyan Mini",
+        "price": 7
+    },
+    {
+        "name": "Deli Mini standard",
+        "price": 7
+    },
+    {
+        "name": "Texas Instruments TI-30XS", 
+        "price": 15.44
+    },
+    {
+        "name": "Sharp EL-W535TGBBL 16-digit", 
+        "price": 19.72
+    },
+    {
+        "name": "Texas Instruments TI-84 Plus CE", 
+        "price": 100
+    }
+]

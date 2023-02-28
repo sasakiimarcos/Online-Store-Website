@@ -1,9 +1,8 @@
 class Product {
-    constructor(name, price, type, amount=0)
+    constructor(name, price,  amount=0)
     {
         this.name = name,
         this.price = price,
-        this.type = type,
         this.amount = amount
     }
 
@@ -11,7 +10,6 @@ class Product {
 		return {
 			name: this.name,
 			price: this.price,
-			type: this.type,
             amount: this.amount
 		}
     }
@@ -20,6 +18,17 @@ class Product {
 function addtocart(item) {
     switch (item) {
         case "A":
+            console.log(productlist)
+            Toastify({
+                text: `One "${productlist[0].name}" has been added to the shopping cart`,
+                duration: 3000,
+                gravity: 'top',
+                position: 'right',
+                close: true,
+                style: {
+                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                }        
+            }).showToast();
             if (productlist[0].amount == 0) {
                 productlist[0].amount += 1
                 updateTotal()
@@ -33,6 +42,16 @@ function addtocart(item) {
             }
             break
         case "B":
+            Toastify({
+                text: `One "${productlist[1].name}" has been added to the shopping cart`,
+                duration: 3000,
+                gravity: 'top',
+                position: 'right',
+                close: true,
+                style: {
+                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                }        
+            }).showToast();
             if (productlist[1].amount == 0) {
                 productlist[1].amount += 1
                 updateTotal()
@@ -46,6 +65,16 @@ function addtocart(item) {
             }
             break
         case "C":
+            Toastify({
+                text: `One "${productlist[2].name}" has been added to the shopping cart`,
+                duration: 3000,
+                gravity: 'top',
+                position: 'right',
+                close: true,
+                style: {
+                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                }        
+            }).showToast();
             if (productlist[2].amount == 0) {
                 productlist[2].amount += 1
                 updateTotal()
@@ -59,6 +88,16 @@ function addtocart(item) {
             }
             break
         case "D":
+            Toastify({
+                text: `One "${productlist[3].name}" has been added to the shopping cart`,
+                duration: 3000,
+                gravity: 'top',
+                position: 'right',
+                close: true,
+                style: {
+                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                }        
+            }).showToast();
             if (productlist[3].amount == 0) {
                 productlist[3].amount += 1
                 updateTotal()
@@ -72,6 +111,16 @@ function addtocart(item) {
             }
             break
         case "E":
+            Toastify({
+                text: `One "${productlist[4].name}" has been added to the shopping cart`,
+                duration: 3000,
+                gravity: 'top',
+                position: 'right',
+                close: true,
+                style: {
+                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                }        
+            }).showToast();
             if (productlist[4].amount == 0) {
                 productlist[4].amount += 1
                 updateTotal()
@@ -85,6 +134,16 @@ function addtocart(item) {
             }
             break
         case "F":
+            Toastify({
+                text: `One "${productlist[5].name}" has been added to the shopping cart`,
+                duration: 3000,
+                gravity: 'top',
+                position: 'right',
+                close: true,
+                style: {
+                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                }        
+            }).showToast();
             if (productlist[5].amount == 0) {
                 productlist[5].amount += 1
                 updateTotal()
@@ -124,6 +183,8 @@ function createRow (product) {
         updateRow(product)
         addtostorage()
     }
+    button.classList.add("btn")
+    button.classList.add("btn-danger")
     button.innerText = " - "
     column1.append(button)
     column2.innerText = String(product.amount)
@@ -171,19 +232,20 @@ let total = document.getElementById("totalAmount")
 
 let table = document.getElementById("cart-list-table")
 
-let productlist = [
-    new Product("Casio's MS-80B", 9, "scientific"),
-    new Product("Seaciyan Mini Calculator", 7, "mini"),
-    new Product("Deli Mini standard function calculator", 7, "mini"),
-    new Product("Texas Instruments TI-30XS", 15.44, "graphing"),
-    new Product("Sharp EL-W535TGBBL 16-digit scientific calculator", 19.72, "scientific"),
-    new Product("Texas Instruments TI-84 Plus CE", 100, "graphing")
-    ]
+let productlist = []
+
+fetch("../data/data.json")
+.then((res)=> res.json())
+.then((data) =>{
+    for(let product of data){
+        productlist.push(new Product(product.name, product.price))
+}})
+
 if (localStorage.getItem('productlist')) {
     let stored = JSON.parse(localStorage.getItem("productlist"))
-    productlist.length = 0
+    productlist = []
     for (const product of stored)
-        productlist.push(new Product(product.name, product.price, product.type, product.amount));
+        productlist.push(new Product(product.name, product.price, product.amount));
     for (let i = 0; i < productlist.length; i++) {
         if (productlist[i].amount > 0) {
             createRow(productlist[i])
@@ -217,6 +279,21 @@ show.onclick = () => {
 
 let purchase = document.getElementById("purchase")
 purchase.onclick = () => {
-    alert("Item/s have been purchased successfully")
-    clearlist()
+    if (total.innerText != "$0") {
+        const DateTime = luxon.DateTime.now()
+        Swal.fire({
+            title: 'Item/s have been purchased successfully',
+            text: `Item/s purchased on ${DateTime.toLocaleString()} at ${DateTime.hour}:${DateTime.minute < 10 ? "0" + DateTime.minute.toString() : DateTime.minute} for the price of ${total.innerText}`,
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        })    
+        clearlist()
+    } else {
+        Swal.fire({
+            title: 'You have not added any items to the cart',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })    
+    }
+
 }
