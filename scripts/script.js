@@ -16,147 +16,152 @@ class Product {
 }
 
 function addtocart(item) {
-    switch (item) {
-        case "A":
-            console.log(productlist)
-            Toastify({
-                text: `One "${productlist[0].name}" has been added to the shopping cart`,
-                duration: 3000,
-                gravity: 'top',
-                position: 'right',
-                close: true,
-                style: {
-                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
-                }        
-            }).showToast();
-            if (productlist[0].amount == 0) {
-                productlist[0].amount += 1
-                updateTotal()
-                createRow(productlist[0])
-                addtostorage()
-            } else {
-                productlist[0].amount += 1
-                updateTotal()
-                updateRow(productlist[0])
-                addtostorage()
-            }
-            break
-        case "B":
-            Toastify({
-                text: `One "${productlist[1].name}" has been added to the shopping cart`,
-                duration: 3000,
-                gravity: 'top',
-                position: 'right',
-                close: true,
-                style: {
-                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
-                }        
-            }).showToast();
-            if (productlist[1].amount == 0) {
-                productlist[1].amount += 1
-                updateTotal()
-                createRow(productlist[1])
-                addtostorage()
-            } else {
-                productlist[1].amount += 1
-                updateTotal()
-                updateRow(productlist[1])
-                addtostorage ()
-            }
-            break
-        case "C":
-            Toastify({
-                text: `One "${productlist[2].name}" has been added to the shopping cart`,
-                duration: 3000,
-                gravity: 'top',
-                position: 'right',
-                close: true,
-                style: {
-                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
-                }        
-            }).showToast();
-            if (productlist[2].amount == 0) {
-                productlist[2].amount += 1
-                updateTotal()
-                createRow(productlist[2])
-                addtostorage ()
-            } else {
-                productlist[2].amount += 1
-                updateTotal()
-                updateRow(productlist[2])
-                addtostorage ()
-            }
-            break
-        case "D":
-            Toastify({
-                text: `One "${productlist[3].name}" has been added to the shopping cart`,
-                duration: 3000,
-                gravity: 'top',
-                position: 'right',
-                close: true,
-                style: {
-                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
-                }        
-            }).showToast();
-            if (productlist[3].amount == 0) {
-                productlist[3].amount += 1
-                updateTotal()
-                createRow(productlist[3])
-                addtostorage ()
-            } else {
-                productlist[3].amount += 1
-                updateTotal()
-                updateRow(productlist[3])
-                addtostorage()
-            }
-            break
-        case "E":
-            Toastify({
-                text: `One "${productlist[4].name}" has been added to the shopping cart`,
-                duration: 3000,
-                gravity: 'top',
-                position: 'right',
-                close: true,
-                style: {
-                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
-                }        
-            }).showToast();
-            if (productlist[4].amount == 0) {
-                productlist[4].amount += 1
-                updateTotal()
-                createRow(productlist[4])
-                addtostorage()
-            } else {
-                productlist[4].amount += 1
-                updateTotal()
-                updateRow(productlist[4])
-                addtostorage()
-            }
-            break
-        case "F":
-            Toastify({
-                text: `One "${productlist[5].name}" has been added to the shopping cart`,
-                duration: 3000,
-                gravity: 'top',
-                position: 'right',
-                close: true,
-                style: {
-                    background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
-                }        
-            }).showToast();
-            if (productlist[5].amount == 0) {
-                productlist[5].amount += 1
-                updateTotal()
-                createRow(productlist[5])
-                addtostorage()
-            } else {
-                productlist[5].amount += 1
-                updateTotal()
-                updateRow(productlist[5])
-                addtostorage()
-            }
-            break
-    }
+    showfirstitem().then((a) => {
+        showtable()
+    }).catch((b) => {
+        console.log("not first")
+    }).finally((c) => {
+        switch (item) {
+            case "A":
+                Toastify({
+                    text: `One "${productlist[0].name}" has been added to the shopping cart`,
+                    duration: 3000,
+                    gravity: 'top',
+                    position: 'right',
+                    close: true,
+                    style: {
+                        background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                    }        
+                }).showToast();
+                if (productlist[0].amount == 0) {
+                    productlist[0].amount += 1
+                    updateTotal()
+                    createRow(productlist[0])
+                    addtostorage()
+                } else {
+                    productlist[0].amount += 1
+                    updateTotal()
+                    updateRow(productlist[0])
+                    addtostorage()
+                }
+                break
+            case "B":
+                Toastify({
+                    text: `One "${productlist[1].name}" has been added to the shopping cart`,
+                    duration: 3000,
+                    gravity: 'top',
+                    position: 'right',
+                    close: true,
+                    style: {
+                        background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                    }        
+                }).showToast();
+                if (productlist[1].amount == 0) {
+                    productlist[1].amount += 1
+                    updateTotal()
+                    createRow(productlist[1])
+                    addtostorage()
+                } else {
+                    productlist[1].amount += 1
+                    updateTotal()
+                    updateRow(productlist[1])
+                    addtostorage ()
+                }
+                break
+            case "C":
+                Toastify({
+                    text: `One "${productlist[2].name}" has been added to the shopping cart`,
+                    duration: 3000,
+                    gravity: 'top',
+                    position: 'right',
+                    close: true,
+                    style: {
+                        background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                    }        
+                }).showToast();
+                if (productlist[2].amount == 0) {
+                    productlist[2].amount += 1
+                    updateTotal()
+                    createRow(productlist[2])
+                    addtostorage ()
+                } else {
+                    productlist[2].amount += 1
+                    updateTotal()
+                    updateRow(productlist[2])
+                    addtostorage ()
+                }
+                break
+            case "D":
+                Toastify({
+                    text: `One "${productlist[3].name}" has been added to the shopping cart`,
+                    duration: 3000,
+                    gravity: 'top',
+                    position: 'right',
+                    close: true,
+                    style: {
+                        background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                    }        
+                }).showToast();
+                if (productlist[3].amount == 0) {
+                    productlist[3].amount += 1
+                    updateTotal()
+                    createRow(productlist[3])
+                    addtostorage ()
+                } else {
+                    productlist[3].amount += 1
+                    updateTotal()
+                    updateRow(productlist[3])
+                    addtostorage()
+                }
+                break
+            case "E":
+                Toastify({
+                    text: `One "${productlist[4].name}" has been added to the shopping cart`,
+                    duration: 3000,
+                    gravity: 'top',
+                    position: 'right',
+                    close: true,
+                    style: {
+                        background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                    }        
+                }).showToast();
+                if (productlist[4].amount == 0) {
+                    productlist[4].amount += 1
+                    updateTotal()
+                    createRow(productlist[4])
+                    addtostorage()
+                } else {
+                    productlist[4].amount += 1
+                    updateTotal()
+                    updateRow(productlist[4])
+                    addtostorage()
+                }
+                break
+            case "F":
+                Toastify({
+                    text: `One "${productlist[5].name}" has been added to the shopping cart`,
+                    duration: 3000,
+                    gravity: 'top',
+                    position: 'right',
+                    close: true,
+                    style: {
+                        background: 'linear-gradient(90deg, rgba(0,94,3,1) 60%, rgba(69,255,0,1) 100%)'
+                    }        
+                }).showToast();
+                if (productlist[5].amount == 0) {
+                    productlist[5].amount += 1
+                    updateTotal()
+                    createRow(productlist[5])
+                    addtostorage()
+                } else {
+                    productlist[5].amount += 1
+                    updateTotal()
+                    updateRow(productlist[5])
+                    addtostorage()
+                }
+                break
+        }
+    })
 }
 
 function updateTotal () {
@@ -164,7 +169,7 @@ function updateTotal () {
     for (let i = 0; i < productlist.length; i++) {
         totalAmount += productlist[i].amount * productlist[i].price
     }
-    total.innerText = "$" + String(totalAmount)
+    total.innerText = "$" + String(totalAmount.toFixed(2))
 }
 
 function createRow (product) {
@@ -223,8 +228,40 @@ function clearlist () {
         productlist[i].amount = 0
         updateRow(productlist[i])
     }
+    table.style.display = "none"
+    show.innerText = "Show"
     addtostorage()
     updateTotal()
+}
+
+function checkifcartempty () {
+    totalamount = 0
+    for (let item of productlist) {
+        totalamount += item.amount
+    }
+    if (totalamount == 0) {
+        return true
+    } else {     
+        return false
+    }
+}
+
+function showtable () {
+    table.style.display = "block"
+    show.innerText = "Hide"
+}
+
+function hidetable () {
+    table.style.display = "none"
+    show.innerText = "Show"
+}
+
+function showfirstitem () {
+    return new Promise( (resolve, reject) => {
+        setTimeout( () => {
+            checkifcartempty() ? resolve() : reject()
+        }, 0)
+    })
 }
 
 // Variable where the total cost is stored
@@ -268,18 +305,16 @@ clear.onclick = () => {
 
 let show = document.getElementById("cart-list-button")
 show.onclick = () => {
-    if (show.innerText == "Show") {
-        table.style.display = "block"
-        show.innerText = "Hide"
+    if (show.innerText == "Show" && !(checkifcartempty())) {
+        showtable()
     } else {
-        table.style.display = "none"
-        show.innerText = "Show"
+        hidetable()
     }
 }
 
 let purchase = document.getElementById("purchase")
 purchase.onclick = () => {
-    if (total.innerText != "$0") {
+    if (!(checkifcartempty())) {
         const DateTime = luxon.DateTime.now()
         Swal.fire({
             title: 'Item/s have been purchased successfully',

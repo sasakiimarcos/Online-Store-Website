@@ -11,20 +11,13 @@
 </head>
 <body>
     <div class="banner">
-        <h1>Store</h1>
+        <h1>John's Calculator Store</h1>
     </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="./pages/about.html">About Us</a></li>
-            <li><a href="./pages/faq.html">FAQ</a></li>
-        </ul>
-    </nav>
     <div class="cart container-fluid">
         <div class="row" id="cart-total" >
             <div class="col text-center">
                 <h2>Total</h2>
-                <p id="totalAmount">0</p>
+                <p id="totalAmount">$0.00</p>
                 <button id="clear" class="btn btn-info">Clear</button>
             </div>
         </div>
@@ -42,9 +35,11 @@
                 </table>
             </div>
         </div>
-        <div id="cart-submit">
-            <h2>Purchase</h2>
-            <button type="button" id="purchase" class="btn btn-success text-center">Purchase</button>
+        <div id="cart-submit" class="row">
+            <div class="col text-center">
+                <h2>Purchase</h2>
+                <button type="button" id="purchase" class="btn btn-success text-center">Purchase</button>
+            </div>
         </div>
     </div>
     <div class="products">
@@ -53,7 +48,7 @@
             <div class="products-product-description">
                 <h3>Casio's MS-80B</h3>
                 <p><strong>Price:</strong> $9</p>
-                <button value="A" class="products-purchase">Add to cart</button>
+                <button value="A" class="products-purchase btn btn-secondary btn-lg">Add to cart</button>
             </div>
         </div>
         <div class="products-product">
@@ -61,7 +56,7 @@
             <div>
                 <h3>Seaciyan Mini</h3>
                 <p><strong>Price:</strong> $7</p>
-                <button value="B" class="products-purchase">Add to cart</button>
+                <button value="B" class="products-purchase btn btn-secondary btn-lg">Add to cart</button>
             </div>
         </div>
         <div class="products-product">
@@ -69,7 +64,7 @@
             <div class="products-product-description">
                 <h3>Deli Mini Standard</h3>
                 <p><strong>Price:</strong> $7</p>
-                <button value="C" class="products-purchase">Add to cart</button>
+                <button value="C" class="products-purchase btn btn-secondary btn-lg">Add to cart</button>
             </div>
         </div>
         <div class="products-product">
@@ -77,7 +72,7 @@
             <div class="products-product-description">
                 <h3>Texas Instruments TI-30XS</h3>
                 <p><strong>Price:</strong> $15.44</p>
-                <button value="D" class="products-purchase">Add to cart</button>
+                <button value="D" class="products-purchase btn btn-secondary btn-lg">Add to cart</button>
             </div>
         </div>
         <div class="products-product">
@@ -85,7 +80,7 @@
             <div class="products-product-description">
                 <h3>Sharp EL-W535TGBBL 16-digit</h3>
                 <p><strong>Price:</strong> $19.72</p>
-                <button value="E" class="products-purchase">Add to cart</button>
+                <button value="E" class="products-purchase btn btn-secondary btn-lg">Add to cart</button>
             </div>
         </div>
         <div class="products-product">
@@ -93,7 +88,7 @@
             <div class="products-product-description">
                 <h3>Texas Instruments TI-84 Plus CE</h3>
                 <p><strong>Price:</strong> $100</p>
-                <button value="F" class="products-purchase">Add to cart</button>
+                <button value="F" class="products-purchase btn btn-secondary btn-lg">Add to cart</button>
             </div>
         </div>
     </div>

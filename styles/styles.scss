@@ -38,6 +38,7 @@ nav {
 }
 
 .cart {
+    padding: 20px;
     background-color: aliceblue;
     display: flex;
     justify-content: space-around;
@@ -65,13 +66,15 @@ nav {
 }
 
 .products {
+    padding-bottom: 20px;
     background-color: mintcream;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
+    column-gap: 6rem;
+    row-gap: 3rem;
     justify-content: center;
     .products-product {
         border-radius: 20px;
@@ -89,5 +92,8 @@ nav {
             width: 200px;
             display: block;
         }
+    }
+    @media only screen and (max-width:1000px) {
+        grid-template-columns: 1fr 1fr;
     }
 }
