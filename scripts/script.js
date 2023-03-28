@@ -271,7 +271,7 @@ let table = document.getElementById("cart-list-table")
 
 let productlist = []
 
-fetch("../data/data.json")
+fetch("https://sasakiimarcos.github.io/Online-Store-Website/data/data.json")
 .then((res)=> res.json())
 .then((data) =>{
     for(let product of data){
